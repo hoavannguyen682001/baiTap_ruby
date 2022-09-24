@@ -9,7 +9,7 @@ class Human
         @email = email.to_s
     end
     def display
-        puts "  - Name: #{@name} - Gender: #{@gender} - Age: #{@age} - Height: #{@height} - Weight: #{@weight} - Phone: #{@phone} - Email: #{@email}"
+        puts "- Name: #{@name} - Gender: #{@gender}- Age: #{@age} - Height: #{@height} - Weight: #{@weight} - Phone: #{@phone} - Email: #{@email}"
 
     end
 end
@@ -31,10 +31,7 @@ class Student < Human
 
     def display
         super
-        puts "  - School: #{@school} 
-                - Class: #{@classs} 
-                - StudentId: #{@studentId} 
-                - Grade: #{avgScore()}" 
+        puts "- School: #{@school} - Class: #{@classs}  - StudentId: #{@studentId} - GRADE: #{avgScore()}" 
     end
 end
 
