@@ -1,5 +1,6 @@
 class Officer
 
+    attr_accessor :name, :age, :gender, :address
     def initialize(name, age, gender,address)
         @name = name
         @age = age.to_i
@@ -64,8 +65,16 @@ class ManagerOfficer
             puts "#{val.display}"
         end
     end
-    def search(name)
-        if(array_officer.include?(name))
+    def search(sname)
+        $array_officer.each do |val|
+            if(val.name == sname)
+                puts "#{val.display}"
+            else
+                puts ("Khong tim thay ten")
+            end
+        end
+
+        if()
             
         end
     end
@@ -79,6 +88,9 @@ end
 
     officer3 = Engineer.new("Hoa3", 21,"nam","Da Nang")
     officer3.inputInfo("brach")
+
+    manager_officer = ManagerOfficer.new
+
     while(true)
         puts ("1. Them Moi Can Bo")
         puts ("2. Xem Thong Tin Can Bo")
@@ -87,7 +99,6 @@ end
         choose = gets.chomp().to_i
         case choose
         when 1 
-            manager_officer = ManagerOfficer.new
             manager_officer.inputOfficer(officer1)
             manager_officer.inputOfficer(officer2)
             manager_officer.inputOfficer(officer3)
@@ -97,9 +108,12 @@ end
             manager_officer.outputInfo
             puts ("================================================================")
         when 3
-            puts ("Tim kiem")
+            puts ("Nhap ten: ")
+            name = gets.chomp()
+            manager_officer.search(name)
         else
             puts ("Khong hop le")
+            return
         end
     end
 
