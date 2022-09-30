@@ -73,10 +73,6 @@ class ManagerOfficer
                 puts ("Khong tim thay ten")
             end
         end
-
-        if()
-            
-        end
     end
 
 end
@@ -95,6 +91,7 @@ end
         puts ("1. Them Moi Can Bo")
         puts ("2. Xem Thong Tin Can Bo")
         puts ("3. Tim Kiem Can BO")
+        puts ("Nhap bat ky de thoat")
 
         choose = gets.chomp().to_i
         case choose
@@ -113,7 +110,7 @@ end
             manager_officer.search(name)
         else
             puts ("Khong hop le")
-            return
+            break
         end
     end
 
