@@ -1,21 +1,35 @@
 class Document
     attr_accessor :docID, :nxb, :number
 
+    def checkDocID(id)
+        if($manager_document.length == 0) then
+            return true
+        end
+
+        $manager_document.each do |val| 
+            if(val.docID == id) then
+                return false
+            end
+        end
+        return true
+    end
+
     def inputDocument()
-        print ("Nhap ma sach: ")
-        @docID = gets.chomp()
+        loop do
+                print ("Nhap ma sach: ")
+                @docID = gets.chomp()
+                if(checkDocID(@docID) == false) then
+                    puts ("Ma sach trung. Vui long nhap lai")
+                end
+            break if checkDocID(@docID)
+        end
+        
         print ("Nhap nha xuat ban: ")
         @nxb = gets.chomp()
         print ("Nhap so luong xuat ban: ")
         @number = gets.chomp().to_i
     end 
 
-    def checkId(id)
-        if(@docID == id) then
-            return true
-        end
-        return false
-    end
 
     def display
         puts ("-DocumentID: #{@docID} - Nxb: #{@nxb} - Number: #{@number}")
@@ -34,7 +48,7 @@ class Book < Document
 
     def display
         super 
-        puts ("-NumPages: #{@numPages} - Author: #{@author}")
+        puts ("-NumPages: #{@numPages} - Author: #{@author} - Type: Book")
     end
 end
 
@@ -50,7 +64,8 @@ class Journal < Document
 
     def display
         super
-        puts ("-IssueNum: #{@issueNum} - Month Issue: #{@monthIssue}")
+        puts ("-IssueNum: #{@issueNum} - Month Issue: #{@monthIssue} - Type: Journal")
+        
     end
 end
 
@@ -64,7 +79,7 @@ class NewSpaper < Document
 
     def display
         super
-        puts ("-DayIssue: #{@dayIssue}")
+        puts ("-DayIssue: #{@dayIssue} - Type: NewSpaper")
     end
 end
 
@@ -81,6 +96,8 @@ class ManagerDocument
         end
     end
 
+    
+
     def delDocument(id)
         $manager_document.each do |val|
             if(val.docID == id) then
@@ -91,17 +108,71 @@ class ManagerDocument
         return false
     end
 
-    def searchDocument(id)
-
+    def searchDocument(typeDoc, id)
+        $manager_document.each do |val|
+            if((val.class.to_s == typeDoc) && (val.docID == id)) then
+                puts ("#{val.display}")
+            else
+                puts("#{val.class} - #{typeDoc}")
+            end
+        end
     end
-
 
 end
 
+$managerDoc = ManagerDocument.new
 
-manager_document = ManagerDocument.new
-manage = ManagerDocument.new
 
+def inputByTypeDoc()
+    puts ("a. Them Moi Tai Lieu Sach")
+    puts ("b. Them Moi Tai Lieu Bao,")
+    puts ("c. Them Moi Tai Lieu Tap Chi")
+    print "Them moi tai lieu loai (a - Sach, b - Bao, c - Tap Chi): "
+    choice = gets.chomp()
+    case choice
+        when "a"
+            book = Book.new
+            book.inputDocument()
+            book.inputBook()
+            $managerDoc.input(book)
+        when "b"
+            journal = Journal.new
+            journal.inputDocument()
+            journal.inputJournal()
+            $managerDoc.input(journal)
+        when "c"
+            newSpaper = NewSpaper.new
+            newSpaper.inputDocument()
+            newSpaper.inputNewSpaper()
+            $managerDoc.input(newSpaper)
+    puts ("Them thanh cong")
+    puts ("================================================================")
+    end
+end
+
+
+
+def searachByTypeDoc()
+    puts ("a. Tim kiem Sach")
+    puts ("b. Tim kiem Bao,")
+    puts ("c. Tim kiem Tap Chi")
+    choice = gets.chomp()
+    case choice
+        when "a"
+            puts ("Nhap ma tai lieu muon tim: ")
+            id = gets.chomp()
+            $managerDoc.searchDocument("Book",id)
+        when "b"
+            puts ("Nhap ma tai lieu muon tim: ")
+            id = gets.chomp()
+            $managerDoc.searchDocument("Journal",id)
+        when "c"
+            puts ("Nhap ma tai lieu muon tim: ")
+            id = gets.chomp()
+            $managerDoc.searchDocument("NewSpaper",id)
+    puts ("================================================================")
+    end
+end
 
 
 while(true)
@@ -120,68 +191,16 @@ while(true)
         when 2
             puts ("Nhap ma tai lieu muon xoa: ")
             id = gets.chomp()
-            manager_document.delDocument(id) ? puts("Xoa thanh cong") : puts("Khong tim thay ma tai lieu")
+            $managerDoc.delDocument(id) ? puts("Xoa thanh cong") : puts("Khong tim thay ma tai lieu")
             puts ("================================================================")
         when 3
             puts ("Thong tin tai lieu: ")
-            manager_document.outputInfo
+            $managerDoc.outputInfo
         when 4
-           
+           searachByTypeDoc()
         else
             puts ("Thoat!")
             break   
     end
 end
-
-
-def inputByTypeDoc()
-    puts ("a. Them Moi Tai Lieu Sach")
-    puts ("b. Them Moi Tai Lieu Bao,")
-    puts ("c. Them Moi Tai Lieu Tap Chi")
-    print "Them moi tai lieu loai (a - Sach, b - Bao, c - Tap Chi): "
-    choice = gets.chomp()
-    case choice
-        when "a"
-            book = Book.new
-            book.inputDocument()
-            book.inputBook()
-            manager_document.input(book)
-        when "b"
-            journal = Journal.new
-            journal.inputDocument()
-            journal.inputJournal()
-            manager_document.input(journal)
-        when "c"
-            newSpaper = NewSpaper.new
-            newSpaper.inputDocument()
-            newSpaper.inputNewSpaper()
-            manager_document.input(newSpaper)
-    puts ("Them thanh cong")
-    puts ("================================================================")
-    end
-end
-
-
-def searachByTypeDoc()
-    puts ("a. Tim kiem Sach")
-    puts ("b. Tim kiem Bao,")
-    puts ("c. Tim kiem Tap Chi")
-    choice = gets.chomp()
-    case choice
-        when "a"
-            puts ("Nhap ma tai lieu muon tim: ")
-            id = gets.chomp()
-            manager_document.searchDocument(id)
-        when "b"
-            puts ("Nhap ma tai lieu muon tim: ")
-            id = gets.chomp()
-            manager_document.searchDocument(id)
-        when "c"
-            puts ("Nhap ma tai lieu muon tim: ")
-            id = gets.chomp()
-            manager_document.searchDocument(id)
-    puts ("================================================================")
-    end
-end
-
 
