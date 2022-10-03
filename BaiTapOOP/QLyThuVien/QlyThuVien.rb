@@ -1,6 +1,8 @@
+#Class Tài Liệu
 class Document
     attr_accessor :docID, :nxb, :number
 
+    #Function Kiểm tra mã tài liệu
     def checkDocID(id)
         if($manager_document.length == 0) then
             return true
@@ -14,6 +16,7 @@ class Document
         return true
     end
 
+    #Function Nhập tài liệu
     def inputDocument()
         loop do
                 print ("Nhap ma sach: ")
@@ -35,7 +38,7 @@ class Document
         puts ("-DocumentID: #{@docID} - Nxb: #{@nxb} - Number: #{@number}")
     end
 end
-
+#Class Book kế thừa Class Docment
 class Book < Document
     attr_accessor :numPages, :author
 
@@ -51,7 +54,7 @@ class Book < Document
         puts ("-NumPages: #{@numPages} - Author: #{@author} - Type: Book")
     end
 end
-
+#Class Journal kế thừa Class Docment
 class Journal < Document
     attr_accessor :issueNum, :monthIssue
 
@@ -68,7 +71,7 @@ class Journal < Document
         
     end
 end
-
+#Class NewSpaper kế thừa Class Docment
 class NewSpaper < Document
     attr_accessor :dayIssue
 
@@ -82,7 +85,7 @@ class NewSpaper < Document
         puts ("-DayIssue: #{@dayIssue} - Type: NewSpaper")
     end
 end
-
+#Class Quản lý tài liệu 
 class ManagerDocument
     $manager_document = Array.new
 
@@ -97,7 +100,7 @@ class ManagerDocument
     end
 
     
-
+#Function Xoá tài liệu theo mã
     def delDocument(id)
         $manager_document.each do |val|
             if(val.docID == id) then
@@ -107,7 +110,7 @@ class ManagerDocument
         end
         return false
     end
-
+#Function Tìm kiếm tài liệu theo loại
     def searchDocument(typeDoc, id)
         $manager_document.each do |val|
             if((val.class.to_s == typeDoc) && (val.docID == id)) then
@@ -120,9 +123,12 @@ class ManagerDocument
 
 end
 
+
+#Main
+
 $managerDoc = ManagerDocument.new
 
-
+#Function Nhập tài liệu 
 def inputByTypeDoc()
     puts ("a. Them Moi Tai Lieu Sach")
     puts ("b. Them Moi Tai Lieu Bao,")
@@ -150,9 +156,9 @@ def inputByTypeDoc()
     end
 end
 
+#Function Tìm Kiếm tài liệu
 
-
-def searachByTypeDoc()
+def searchByTypeDoc()
     puts ("a. Tim kiem Sach")
     puts ("b. Tim kiem Bao,")
     puts ("c. Tim kiem Tap Chi")
@@ -197,7 +203,7 @@ while(true)
             puts ("Thong tin tai lieu: ")
             $managerDoc.outputInfo
         when 4
-           searachByTypeDoc()
+            searchByTypeDoc()
         else
             puts ("Thoat!")
             break   
