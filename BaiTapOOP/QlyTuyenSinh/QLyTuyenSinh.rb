@@ -88,7 +88,7 @@ def inputCandidate()
     puts ("a. Them Thi Sinh Khoi A")
     puts ("b. Them Thi Sinh Khoi B")
     puts ("c. Them Thi Sinh Khoi C")
-    print "Them moi tai lieu loai (a - Khoi A, b - Khoi B, c - Khoi C): "
+    print "Lua chon (a - Khoi A, b - Khoi B, c - Khoi C): "
     choice = gets.chomp()
     case choice
         when "a"
