@@ -1,5 +1,5 @@
 class Student
-    attr_accessor :name, :age, :address, :classStudent
+    attr_accessor :name, :age, :address, :class
 
     def inputInfo
         puts("Nhap Ho va Ten: ")
