@@ -1,12 +1,13 @@
 # Nhập các số vào mảng, in ra số lớn nhất, nhỏ nhất, giá trị trung bình của mảng.
-# Nhập 3 cạnh tam giác, kiểm tra điều kiện có phải 3 cạnh tam giác hay ko? nếu đúng --> tính chu vi, diên tích --> in ra
+# Nhập 3 cạnh tam giác, kiểm tra điều kiện có phải 3 cạnh tam giác hay ko? 
+# nếu đúng --> tính chu vi, diên tích --> in ra
 # Viết chương trình để nhắc người dùng nhập tên của họ, sau đó in kết quả trên màn hình.
 # Viết chương trình để nhập ba số nguyên đã biết, sau đó in ra màn hình theo thứ tự tăng dần và giảm dần.
 # Viết chương trình để in một số nguyên, một số thực, một ký tự đã được định nghĩa trước.
 
 #===============================================================================================
 
-Bai 1 Nhập các số vào mảng, in ra số lớn nhất, nhỏ nhất, giá trị trung bình của mảng.
+#Bai 1 Nhập các số vào mảng, in ra số lớn nhất, nhỏ nhất, giá trị trung bình của mảng.
 puts "Bai 1. Nhập các số vào mảng, in ra số lớn nhất, nhỏ nhất, giá trị trung bình của mảng."
 arr = []
 avg = 0
@@ -19,8 +20,8 @@ puts "Gia tri lon nhat cua mang la: #{arr.max} "
 puts "Gia tri nho nhat cua mang la: #{arr.min} " 
 puts "Gia tri trung binh cua mang la: #{avg.to_f / arr.length}" 
 
-Bai 2. Nhập 3 cạnh tam giác, kiểm tra điều kiện có phải 3 cạnh tam giác hay ko?
-      nếu đúng --> tính chu vi, diên tích --> in ra
+#Bai 2. Nhập 3 cạnh tam giác, kiểm tra điều kiện có phải 3 cạnh tam giác hay ko?
+      #nếu đúng --> tính chu vi, diên tích --> in ra
 
 puts "Bai 2. Nhập 3 cạnh tam giác, kiểm tra điều kiện có phải 3 cạnh tam giác hay ko? \n
      nếu đúng --> tính chu vi, diên tích --> in ra"
@@ -40,14 +41,14 @@ else
     print "3 canh vua nhap khong phai la 3 canh cua 1 tam giac"
 end
 
-Bai 3.Viết chương trình để nhắc người dùng nhập tên của họ, sau đó in kết quả trên màn hình.
+#Bai 3.Viết chương trình để nhắc người dùng nhập tên của họ, sau đó in kết quả trên màn hình.
 
 puts "Bai 3. Viết chương trình để nhắc người dùng nhập tên của họ, sau đó in kết quả trên màn hình"
 puts "Nhap ho va ten cua ban: "
 name = gets.chomp()
 puts "Ho va ten cua ban la: #{name}"
     
-Bai 4. Viết chương trình để nhập ba số nguyên đã biết, sau đó in ra màn hình theo thứ tự tăng dần và giảm dần.
+#Bai 4. Viết chương trình để nhập ba số nguyên đã biết, sau đó in ra màn hình theo thứ tự tăng dần và giảm dần.
 puts "Bai 4. Viết chương trình để nhập ba số nguyên đã biết,
     sau đó in ra màn hình theo thứ tự tăng dần và giảm dần."
 
@@ -80,7 +81,7 @@ puts "Thu tu tang dan: #{num1} - #{num2} - #{num3}"
 puts "Thu tu giam dan: #{num3} - #{num2} - #{num1}"
 
 
-Bai 5. Viết chương trình để in một số nguyên, một số thực, một ký tự đã được định nghĩa trước.
+#Bai 5. Viết chương trình để in một số nguyên, một số thực, một ký tự đã được định nghĩa trước.
 puts "Bai 5. Viết chương trình để in một số nguyên, một số thực, một ký tự đã được định nghĩa trước."
 
 soNguyen = 5
